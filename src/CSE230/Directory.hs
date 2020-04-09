@@ -30,11 +30,11 @@ errorMsg args = unlines
 -- >>> showDirectory "src"
 -- src
 -- ├── CSE230
--- │   ├── Doc.hs
 -- │   ├── Directory.hs
+-- │   ├── Doc.hs
+-- │   ├── Graphics.hs
 -- │   ├── List.hs
--- │   ├── Shapes.hs
--- │   └── Graphics.hs
+-- │   └── Shapes.hs
 -- └── Main.hs
 -- <BLANKLINE>
 --
@@ -49,11 +49,11 @@ showDirectory path = do
 --   the directory rooted at 'path' and prints them out.
 -------------------------------------------------------------------------------
 -- >>> showMatchingFiles "src" ".hs"
--- src/CSE230/Doc.hs
 -- src/CSE230/Directory.hs
+-- src/CSE230/Doc.hs
+-- src/CSE230/Graphics.hs
 -- src/CSE230/List.hs
 -- src/CSE230/Shapes.hs
--- src/CSE230/Graphics.hs
 -- src/Main.hs
 
 showMatchingFiles :: FilePath -> String -> IO ()
@@ -82,29 +82,27 @@ example = Sub "."
                         , Fil "triangle1.png"
                         , Fil "triangle2.png"
                         ]
-            , Sub "src" [ Fil "Main.hs"
-                        , Sub "CSE230" [ Fil "Directory.hs"
+            , Sub "src" [ Sub "CSE230" [ Fil "Directory.hs"
                                        , Fil "Doc.hs"
                                        , Fil "Graphics.hs"
                                        , Fil "List.hs"
                                        , Fil "Shapes.hs"
                                        ]
+                        , Fil "Main.hs"
                         ]
             , Fil "stack.yaml"
             ]
 
 srcDir :: Dir FilePath
-srcDir = Sub "src" 
-           [ Sub "CSE230" 
-               [ Fil "Doc.hs"
-               , Fil "Directory.hs"
-               , Fil "List.hs"
-               , Fil "Shapes.hs"
-               , Fil "Graphics.hs"
-               ]
-            , Fil "Main.hs"
-            ]
-
+srcDir = Sub "src"
+         [ Sub "CSE230" [ Fil "Directory.hs"
+                        , Fil "Doc.hs"
+                        , Fil "Graphics.hs"
+                        , Fil "List.hs"
+                        , Fil "Shapes.hs"
+                        ]
+         , Fil "Main.hs"
+         ]
 
 
 -------------------------------------------------------------------------------
@@ -116,7 +114,7 @@ srcDir = Sub "src"
 -- ├── LICENSE
 -- ├── README.md
 -- ├── cse230-tree.cabal
--- ├── img
+-- ├── out
 -- │   ├── carpet.png
 -- │   ├── chess1.png
 -- │   ├── chess2.png
@@ -124,23 +122,23 @@ srcDir = Sub "src"
 -- │   ├── triangle1.png
 -- │   └── triangle2.png
 -- ├── src
--- │   ├── Main.hs
--- │   └── CSE230
--- │       ├── Directory.hs
--- │       ├── Doc.hs
--- │       ├── Graphics.hs
--- │       ├── List.hs
--- │       └── Shapes.hs
+-- │   ├── CSE230
+-- │   │   ├── Directory.hs
+-- │   │   ├── Doc.hs
+-- │   │   ├── Graphics.hs
+-- │   │   ├── List.hs
+-- │   │   └── Shapes.hs
+-- │   └── Main.hs
 -- └── stack.yaml
 -- <BLANKLINE>
 -- >>> dirDoc srcDir
 -- src
 -- ├── CSE230
--- │   ├── Doc.hs
 -- │   ├── Directory.hs
+-- │   ├── Doc.hs
+-- │   ├── Graphics.hs
 -- │   ├── List.hs
--- │   ├── Shapes.hs
--- │   └── Graphics.hs
+-- │   └── Shapes.hs
 -- └── Main.hs
 -- <BLANKLINE>
 --
@@ -222,7 +220,7 @@ findFiles sub dir = reverse (foldDir f [] dir)
 -------------------------------------------------------------------------------
 --
 -- >>> build "src"
--- Sub "src" [Sub "CSE230" [Fil "Doc.hs",Fil "Directory.hs",Fil "List.hs",Fil "Shapes.hs",Fil "Graphics.hs"],Fil "Main.hs"]
+-- Sub "src" [Sub "CSE230" [Fil "Directory.hs", Fil "Doc.hs", Fil "Graphics.hs", Fil "List.hs", Fil "Shapes.hs"],Fil "Main.hs"]
 --
 
 build :: FilePath -> IO (Dir FilePath)

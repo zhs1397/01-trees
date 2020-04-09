@@ -440,11 +440,11 @@ directory (of this repo).
 ```
 src
 ├── CSE230
-│   ├── Doc.hs
 │   ├── Directory.hs
+│   ├── Doc.hs
+│   ├── Graphics.hs
 │   ├── List.hs
-│   ├── Shapes.hs
-│   └── Graphics.hs
+│   └── Shapes.hs
 └── Main.hs
 ```
 
@@ -460,11 +460,11 @@ prints out the list of all the files (recursively) inside `src`
 that match the substring `.hs`:
 
 ```
-src/CSE230/Doc.hs
 src/CSE230/Directory.hs
+src/CSE230/Doc.hs
+src/CSE230/Graphics.hs
 src/CSE230/List.hs
 src/CSE230/Shapes.hs
-src/CSE230/Graphics.hs
 src/Main.hs
 ```
 
@@ -484,11 +484,11 @@ For example, the files in the `src` directory can be represented as:
 srcDir :: Dir FilePath
 srcDir = Sub "src" 
            [ Sub "CSE230" 
-               [ Fil "Doc.hs"
-               , Fil "Directory.hs"
+               [ Fil "Directory.hs"
+               , Fil "Doc.hs"
+               , Fil "Graphics.hs"
                , Fil "List.hs"
                , Fil "Shapes.hs"
-               , Fil "Graphics.hs"
                ]
             , Fil "Main.hs"
             ]
@@ -512,11 +512,11 @@ When you are done, you should see the following behavior:
 >>> dirDoc srcDir
 src
 ├── CSE230
-│   ├── Doc.hs
 │   ├── Directory.hs
+│   ├── Doc.hs
+│   ├── Graphics.hs
 │   ├── List.hs
-│   ├── Shapes.hs
-│   └── Graphics.hs
+│   └── Shapes.hs
 └── Main.hs
 ```
 
@@ -526,7 +526,7 @@ src
 ├── LICENSE
 ├── README.md
 ├── cse230-tree.cabal
-├── img
+├── out
 │   ├── carpet.png
 │   ├── chess1.png
 │   ├── chess2.png
@@ -534,13 +534,13 @@ src
 │   ├── triangle1.png
 │   └── triangle2.png
 ├── src
-│   ├── Main.hs
-│   └── One
-│       ├── Directory.hs
-│       ├── Doc.hs
-│       ├── Graphics.hs
-│       ├── List.hs
-│       └── Shapes.hs
+│   ├── CSE230
+│   │   ├── Directory.hs
+│   │   ├── Doc.hs
+│   │   ├── Graphics.hs
+│   │   ├── List.hs
+│   │   └── Shapes.hs
+│   └── Main.hs
 └── stack.yaml
 ```
 
@@ -554,7 +554,7 @@ When you are done, you should see the following behavior:
 
 ```haskell
 >>> allFiles example
-["LICENSE","README.md","cse230-tree.cabal","carpet.png","chess1.png","chess2.png","rainbow.png","triangle1.png","triangle2.png","Main.hs","Directory.hs","Doc.hs","Graphics.hs","List.hs","Shapes.hs","stack.yaml"]
+["LICENSE","README.md","cse230-tree.cabal","carpet.png","chess1.png","chess2.png","rainbow.png","triangle1.png","triangle2.png","Directory.hs","Doc.hs","Graphics.hs","List.hs","Shapes.hs","Main.hs","stack.yaml"]
 ```
 
 
@@ -568,7 +568,7 @@ When you are done, you should see the following behavior:
 
 ```haskell
 >>> allDirs example
-[".","img","src","One"]
+[".","out","src","CSE230"]
 ```
 
 
@@ -583,7 +583,8 @@ When you are done, you should see the following behavior:
 
 ```haskell
 >>> findFiles ".hs" example
-["./src/Main.hs","./src/One/Directory.hs","./src/One/Doc.hs","./src/One/Graphics.hs","./src/One/List.hs","./src/One/Shapes.hs"]
+["./src/CSE230/Directory.hs","./src/CSE230/Doc.hs","./src/CSE230/Graphics.hs","./src/CSE230/List.hs","./src/CSE230/Shapes.hs","./src/Main.hs"]
+
 ```
 
 ### `build`
@@ -600,7 +601,7 @@ in your `src/` directory!)
 
 ```haskell
 >>> build "src"
-Sub "src" [Sub "CSE230" [Fil "Doc.hs",Fil "Directory.hs",Fil "List.hs",Fil "Shapes.hs",Fil "Graphics.hs"],Fil "Main.hs"]
+Sub "src" [Sub "CSE230" [Fil "Directory.hs", Fil "Doc.hs", Fil "Graphics.hs", Fil "List.hs", Fil "Shapes.hs"],Fil "Main.hs"]
 ```
 
 Finally, at this point, `stack install` should build and

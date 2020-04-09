@@ -61,7 +61,7 @@ chessBoard2 = iter 2 f base
 
 
 -------------------------------------------------------------------------------
--- | Sierpinski Triangle with `iter`
+-- | Sierpinski Triangle with recursion
 -------------------------------------------------------------------------------
 mkTriangle1 :: IO ()
 mkTriangle1 = save "img/triangle1.png" sierpinskiTriangle1
