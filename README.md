@@ -193,7 +193,7 @@ When you are done, you should see the following behavior:
 
 Fill in the definition of `intersp` such that 
 `intersp s [x1,x2,...,xn]` returns the list 
-`[x1, s, x2, s, ..., xn, s]`. 
+`[s, x1, s, x2, s, ..., xn, s]`. 
 
 When you are done, you should see the following behavior:
 
