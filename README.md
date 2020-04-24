@@ -554,7 +554,7 @@ When you are done, you should see the following behavior:
 
 ```haskell
 >>> allFiles example
-["LICENSE","README.md","cse230-tree.cabal","carpet.png","chess1.png","chess2.png","rainbow.png","triangle1.png","triangle2.png","Directory.hs","Doc.hs","Graphics.hs","List.hs","Shapes.hs","Main.hs","stack.yaml"]
+["LICENSE","README.md","cse230-tree.cabal","carpet.png","chess1.png","chess2.png","rainbow.png","triangle1.png","triangle2.png","Main.hs","Directory.hs","Doc.hs","Graphics.hs","List.hs","Shapes.hs","stack.yaml"]
 ```
 
 
@@ -568,7 +568,7 @@ When you are done, you should see the following behavior:
 
 ```haskell
 >>> allDirs example
-[".","out","src","CSE230"]
+[".","img","src","CSE230"]
 ```
 
 
