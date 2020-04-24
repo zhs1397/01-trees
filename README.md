@@ -30,6 +30,15 @@ with suitable Haskell implementations.
 
 ## Instructions
 
+### Download
+
+You can get the assignment by forking or cloning this repo
+
+```
+$ git clone git@github.com:ucsd-cse230/01-trees.git
+```
+
+
 ### Assignment Testing and Evaluation
 
 Your functions/programs **must** compile and run on the [VM][VM-URL].
@@ -73,15 +82,8 @@ but you will not be graded on this.
 
 ### Submission Instructions
 
-You can submit your code by building `cse230-trees.zip` and uploading via GradeScope. 
+Submit this assignment on gradescope -- go to the assignments page and enter the **link to your github repo**.
 
-1. Build the `cse230-trees.zip` file by running
-
-```bash
-$ make turnin
-```
-
-2. Submit the `cse230-trees.zip` via GradeScope.
 
 ### Installation Instructions for Ubuntu/Linux Users
 
@@ -191,7 +193,7 @@ When you are done, you should see the following behavior:
 
 Fill in the definition of `intersp` such that 
 `intersp s [x1,x2,...,xn]` returns the list 
-`[x1, s, x2, s, ..., xn, s]`. 
+`[s, x1, s, x2, s, ..., xn, s]`. 
 
 When you are done, you should see the following behavior:
 
