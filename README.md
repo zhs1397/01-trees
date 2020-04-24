@@ -570,7 +570,7 @@ When you are done, you should see the following behavior:
 
 ```haskell
 >>> allDirs example
-[".","img","src","CSE230"]
+[".","out","src","CSE230"]
 ```
 
 
