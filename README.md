@@ -30,20 +30,9 @@ with suitable Haskell implementations.
 
 ## Instructions
 
-### Download
-
-You can get the assignment by forking or cloning this repo
-
-```
-$ git clone git@github.com:ucsd-cse230/01-trees.git
-```
-
-
 ### Assignment Testing and Evaluation
 
 Your functions/programs **must** compile and run on the [VM][VM-URL].
-
-**NOTE:** Please download the [VM][VM-URL] again, we have added some extra libraries for this assignment!
 
 Most of the points, will be awarded automatically, by
 **evaluating your functions against a given test suite**.
