@@ -1,13 +1,6 @@
-ASSIGNMENT  = cse230-trees
-ZIPFILE     = $(ASSIGNMENT).zip
-ZIPCONTENTS = img platform src test out $(ASSIGNMENT).cabal stack.yaml Makefile .gitignore LICENSE README.md
-
 STACK       = stack --allow-different-user
 
 .PHONY: all test build clean distclean turnin
-
-# make run silent
-.SILENT:
 
 all: test
 
@@ -21,5 +14,11 @@ distclean: clean
 	$(STACK) clean
 
 turnin: clean
-	rm -f $(ZIPFILE)
-	zip -r $(ZIPFILE) $(ZIPCONTENTS) -x '*/\.*' -x@.gitignore
+	git commit -a -m "turnin"
+	git push origin master
+
+upstream:
+	git remote add upstream https://github.com/ucsd-cse230/01-trees.git
+
+update:
+	git pull upstream master

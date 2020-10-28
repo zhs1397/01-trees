@@ -71,8 +71,11 @@ but you will not be graded on this.
 
 ### Submission Instructions
 
-Submit this assignment on gradescope -- go to the assignments page and enter the **link to your github repo**.
+To submit your code, just do:
 
+```bash
+$ make turnin
+```
 
 ### Installation Instructions for Ubuntu/Linux Users
 
