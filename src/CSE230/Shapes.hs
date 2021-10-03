@@ -8,12 +8,12 @@ import CSE230.Graphics
 main :: IO ()
 -------------------------------------------------------------------------------
 main = do 
-  mkRainbow
   mkChess1 
+  {- mkRainbow
   mkChess2 
   mkTriangle1
   mkTriangle2
-  mkCarpet
+  mkCarpet -}
 
 -------------------------------------------------------------------------------
 -- | Rainbow with 'map' 
