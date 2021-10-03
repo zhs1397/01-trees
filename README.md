@@ -77,6 +77,9 @@ To submit your code, just do:
 $ make turnin
 ```
 
+If you are working in a group, make sure to update the file `COLLABORATORS.md` 
+with your group members, but **each person must submit on their own**.
+
 ### Installation Instructions for Ubuntu/Linux Users
 
 You may have to do the equivalent of 
@@ -87,6 +90,11 @@ $ sudo apt-get install libxi-dev libxrandr-dev libxcursor-dev libxinerama-dev fr
 
 to get the graphics stuff working. (Or just use the [VM image][VM-URL])
 
+On Centos the relevant packages appear to be:
+
+```
+$ yum install libXi-devel libXrandr-devel libXcursor-devel libXinerama-devel freeglut
+```
 
 ### Installation Instructions for WSL Users
 
