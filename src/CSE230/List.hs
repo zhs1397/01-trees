@@ -13,8 +13,8 @@ import Prelude hiding (maximum)
 
 clone :: Int -> a -> [a]
 clone n x 
-  | n <= 0    = error "fill this in"
-  | otherwise = error "fill this in"
+  | n <= 0    = []
+  | otherwise = x : (clone (n-1) x)
 
 -------------------------------------------------------------------------------
 -- | Padding a List
@@ -35,7 +35,11 @@ data Dir = DirL | DirR
 -- [1,2,3,4,5]
 
 pad :: Dir -> Int -> a -> [a] -> [a]
-pad dir n x ys = error "fill this in"
+pad dir n x ys = 
+ | (n <= (length ys)) = ys
+ | dir == DirL  = (clone (n - (length ys)) x)++ys
+ | dir == DirR  = ys ++ (clone (n - (length ys)) x)
+ | otherwise    = (clone (n - (length ys)) x)++ys
 
 
 -------------------------------------------------------------------------------
@@ -49,9 +53,11 @@ pad dir n x ys = error "fill this in"
 -- True
 --
 isSubSequence :: (Eq a) => [a] -> [a] -> Bool
-isSubSequence []         _      = error "fill this in"
-isSubSequence _          []     = error "fill this in"
-isSubSequence xxs@(x:xs) (y:ys) = error "fill this in"
+isSubSequence []         _      = True
+isSubSequence _          []     = False
+isSubSequence xxs@(x:xs) (y:ys) 
+ | x==y = (isSubSequence xs ys) || (isSubSequence xxs ys)
+ | otherwise = isSubSequence xxs ys
 
 -------------------------------------------------------------------------------
 -- | maximum 
@@ -65,8 +71,8 @@ isSubSequence xxs@(x:xs) (y:ys) = error "fill this in"
 maximum :: (Ord a) => a -> [a] -> a 
 maximum d xs = foldr f base xs  
   where 
-    base     = error "fill this in"
-    f        = error "fill this in"
+    base     = d
+    f        = max
 
 -------------------------------------------------------------------------------
 -- | intersperse
@@ -80,8 +86,8 @@ maximum d xs = foldr f base xs
 intersp :: a -> [a] -> [a]
 intersp s xs = foldr f base xs
   where 
-    base     = error "fill this in"
-    f x r    = error "fill this in"
+    base     = s:[]
+    f x r    = s:x:r
 
 -------------------------------------------------------------------------------
 -- Higher Order: iter
@@ -90,5 +96,5 @@ intersp s xs = foldr f base xs
 -- 1024
 
 iter :: Int -> (a -> a) -> a -> a
-iter 0 _ x = error "fill this in"
-iter n f x = error "fill this in"
+iter 0 _ x = x
+iter n f x = iter (n-1) f (f x)
