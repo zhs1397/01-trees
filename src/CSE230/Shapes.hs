@@ -25,8 +25,15 @@ rainbow :: Image
 rainbow = foldr1 f xs
   where 
     xs  = map g [1..7] 
-    f   = error "fill this in"
-    g   = error "fill this in"
+    f   =  overlay
+    g n 
+      | n==2 = circle 40 solid blue
+      | n==3 = circle 60 solid cyan
+      | n==4 = circle 80 solid green
+      | n==5 = circle 100 solid yellow
+      | n==6 = circle 120 solid orange
+      | n==7 = circle 140 solid red
+      | otherwise = circle 20 solid violet
 
 
 -------------------------------------------------------------------------------
@@ -56,7 +63,7 @@ mkChess2   = save "img/chess2.png"   chessBoard2
 chessBoard2 :: Image 
 chessBoard2 = iter 2 f base
   where
-    f       = error "fill this in"
+    f       = \x -> aboves [ besides [ x, x ], besides [ x, x ] ]
     base    = gridSquare 
 
 
@@ -71,7 +78,7 @@ sierpinskiTriangle1 = triRec 8
 
 triRec :: Int -> Image
 triRec 0 = blueTriangle
-triRec n = error "fill this in"
+triRec n = aboves [triRec (n-1), besides [ triRec (n-1), triRec (n-1) ] ]
 
 blueTriangle :: Image
 blueTriangle = triangle 5 solid fgCol
@@ -85,7 +92,7 @@ mkTriangle2 = save "img/triangle2.png" sierpinskiTriangle2
 sierpinskiTriangle2 :: Image
 sierpinskiTriangle2 = iter 8 f base
  where
-   f               = error "fill this in"
+   f               = \i -> above i (beside i i)
    base            = blueTriangle 
 
 
@@ -98,7 +105,15 @@ mkCarpet   = save "img/carpet.png" sierpinskiCarpet
 sierpinskiCarpet :: Image
 sierpinskiCarpet = iter 4 f base 
   where 
-    f            = error "fill this in"
+    f            = \i -> aboves [besides [abovesAlign low [besides [(overlay i (square ((width i)+1) solid bgCol)), (overlay i (square ((width i)+1) solid bgCol))], (overlay i (square ((width i)+1) solid bgCol))], aboves [(overlay i (square ((width i)+1) solid bgCol)), (overlay i (square ((width i)+1) solid bgCol))]], 
+                                 besides [(overlay i (square ((width i)+1) solid bgCol)), (overlay i (square ((width i)+1) solid bgCol)), (overlay i (square ((width i)+1) solid bgCol))]]
+    base         = blueSquare
+
+blueSquare :: Image
+blueSquare =  square 4 solid fgCol  
+
+
+
     base         = blueSquare
 
 blueSquare :: Image
